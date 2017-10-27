@@ -24,50 +24,31 @@ public class serverHandle implements Runnable{
             while((message = bufferedReader.readLine())!= null){
                 System.out.println(message);
                 String[] data = message.split("-");
-                if(data[0].equals("716")) {//set Id player
+                if(data[0].equals("802")) {//set Id player
                     controller.setIdPLayer(Integer.parseInt(data[2]));
-                }else if(data[0].equals("719")){//set Random
-                    controller.bomb = data[2];
-                }else if(data[0].equals("712")){// set button
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            controller.setbuttons(Integer.parseInt(data[2]));
-                        }
-                    });
-                }else if(data[0].equals("720")) {//set show hit
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (data[4].equals("1")) {
-                                controller.setHitlabel(data[2], "1");
-                            }
-                            if (data[4].equals("2")) {
-                                controller.setHitlabel(data[2], "2");
-                            }
-                        }
-                    });
-                }else if(data[0].equals("718")) {//chat
+                } else if(data[0].equals("600")) {//chat
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
                             controller.Chat(data[2]+"",data[4]+"");
                         }
                     });
+
+                } else if(data[0].equals("801")) {//set turn
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (data[2].equals("1")) {
+                                controller.showPlayerturn(true);
+                            }
+                            if (data[4].equals("2")) {
+                                controller.showPlayerturn(false);
+                            }
+                        }
+                    });
+                }else if (data[0].equals("800")){
+
                 }
-//                }else if(data[0].equals("714")) {//set turn
-//                    Platform.runLater(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            if (data[2].equals("1")) {
-//                                controller.showPlayerturn(1);
-//                            }
-//                            if (data[4].equals("2")) {
-//                                controller.showPlayerturn(2);
-//                            }
-//                        }
-//                    });
-//                }
             }
         }catch (Exception e){
             e.printStackTrace();

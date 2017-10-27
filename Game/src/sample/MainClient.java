@@ -13,7 +13,7 @@ public class MainClient extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("TicTacToe.fxml"));
         primaryStage.setTitle("TICTACTOE");
         primaryStage.setResizable(false);
-        primaryStage.setScene(new Scene(root, 600, 400));
+        primaryStage.setScene(new Scene(root, 654, 437));
         primaryStage.show();
     }
 

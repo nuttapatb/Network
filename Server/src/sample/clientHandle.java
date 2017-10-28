@@ -51,7 +51,25 @@ public class clientHandle implements Runnable {
                             controller.sendMessageToClient("801","Player Turn",data[2]+"",1,"2");
                         }
                     }
-//                    }
+
+                    if (data[0].equals("800")){ //
+                        if (data[3].equals("1")){
+                            if (data[4].equals("9")){
+
+
+                            }
+                        }
+                        if (data[3].equals("2")){
+                            if (data[4].equals("9")){
+
+
+                            }
+                        }
+                    }
+
+
+
+
                     if(data[0].equals("600")) {
                         if (data[3].equals("1")) {
                             controller.sendMessageToClient("600", "Chat", data[2]+"", 0, "1");
@@ -64,6 +82,7 @@ public class clientHandle implements Runnable {
                     }
                     if (data[0].equals("800")){
                         controller.sendMessageToClient("800","Player",data[2]+"",0,"1");
+                        controller.sendMessageToClient("800","Player",data[2]+"",1,"2");
                     }
             }
         }catch (Exception e){

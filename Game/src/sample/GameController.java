@@ -18,6 +18,8 @@ public class GameController {
     PrintWriter writer;
     BufferedReader reader;
     int idPLayer;
+    String playerO = "O";
+    String playerX = "X";
 
     public GameController(){
         connect();
@@ -31,7 +33,7 @@ public class GameController {
             writer = new PrintWriter(serversocket.getOutputStream());
             reader = new BufferedReader(new InputStreamReader(serversocket.getInputStream()));
 
-            sentMessageToSever("900","Greeting","HelloServer",idPLayer+"");
+            sentMessageToSever("900","Greeting","HelloServer",idPLayer+"",null);
 
             Thread s = new Thread(new serverHandle(reader,this));
             s.start();
@@ -45,8 +47,8 @@ public class GameController {
         System.out.println(idPLayer);
     }
 
-    public void sentMessageToSever(String statusCode,String statusPhrase,String message,String ID){
-        writer.println(statusCode+"-"+statusPhrase+"-"+message+"-"+ID);
+    public void sentMessageToSever(String statusCode,String statusPhrase,String message,String ID,String Index){
+        writer.println(statusCode+"-"+statusPhrase+"-"+message+"-"+ID+"-"+Index);
         writer.flush();
     }
 
@@ -72,13 +74,13 @@ public class GameController {
         if (button1.getText().equals("") && count > 0 && playing){
             if (playerTurn == true){
                 button1.setText("X");
-                sentMessageToSever("800","Player","X","1");
+                sentMessageToSever("800","Player",playerX+"-","1","1");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
 
             } else {
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","1");
                 button1.setText("O");
                 playerTurn = true;
                 showPlayerturn(false);
@@ -92,17 +94,16 @@ public class GameController {
     @FXML
     public void ActionBtn2(ActionEvent event){
         if (button2.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button2.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
-
+                sentMessageToSever("800","Player",playerX+"-","1","2");
 
             } else {
                 button2.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","2");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -117,16 +118,16 @@ public class GameController {
     @FXML
     public void ActionBtn3(ActionEvent event){
         if (button3.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button3.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","3");
 
             } else {
                 button3.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","3");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -140,15 +141,15 @@ public class GameController {
     @FXML
     public void ActionBtn4(ActionEvent event){
         if (button4.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button4.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","4");
             } else {
                 button4.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","4");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -162,15 +163,15 @@ public class GameController {
     @FXML
     public void ActionBtn5(ActionEvent event){
         if (button5.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button5.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","5");
             } else {
                 button5.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","5");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -183,15 +184,15 @@ public class GameController {
     @FXML
     public void ActionBtn6(ActionEvent event){
         if (button6.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button6.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","6");
             } else {
                 button6.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","6");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -204,15 +205,16 @@ public class GameController {
     @FXML
     public void ActionBtn7(ActionEvent event){
         if (button7.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
+
             if (playerTurn == true){
                 button7.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","7");
             } else {
                 button7.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","7");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -225,15 +227,15 @@ public class GameController {
     @FXML
     public void ActionBtn8(ActionEvent event){
         if (button8.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button8.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"-","1","8");
             } else {
                 button8.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"-","2","8");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -246,15 +248,15 @@ public class GameController {
     @FXML
     public void ActionBtn9(ActionEvent event) {
         if (button9.getText().equals("") && count > 0 && playing){
-            sentMessageToSever("800","Player","X","1");
             if (playerTurn == true){
                 button9.setText("X");
                 playerTurn = false;
                 showPlayerturn(true);
                 inUseplayer = false;
+                sentMessageToSever("800","Player",playerX+"","1","9");
             } else {
                 button9.setText("O");
-                sentMessageToSever("800","Player","X","2");
+                sentMessageToSever("800","Player",playerO+"","2","9");
                 playerTurn = true;
                 showPlayerturn(false);
                 inUseplayer = true;
@@ -262,6 +264,9 @@ public class GameController {
         }
 //        count--;
         this.check();
+    }
+    public void setButton(String name,int button){
+
     }
 
     @FXML
@@ -481,32 +486,6 @@ public class GameController {
         this.player2 = player2;
     }
 
-    @FXML
-    public void initialize(){
-//        Button[] button = {b00,b01,b02,b03,b04,b05,b06,b07,b08,b10,b11,b12,b13,b14,b15,b16,b17,b18,b20,b21,b22,b23,b24,b25,b26,b27,b28
-//                ,b30,b31,b32,b33,b34,b35,b36,b37,b38,b40,b41,b42,b43,b44,b45,b46,b47,b48,b50,b51,b52,b53,b54,b55,b56,b57,b58};
-//        buttons = button;
-        showPlayerturn(inUseplayer);
-    }
-
-
-//    @FXML
-//    public void PressButton(ActionEvent event){
-//        Button b = (Button) event.getSource();
-//        for (int i = 0; i < buttons.length; i++) {
-//            if(b.equals(buttons[i])){
-//                if(bomb.charAt(i) == '0'){
-//                    countRound++;
-//                    sentMessageToSever("720","Hit",countRound+"",idPLayer+"");
-//                }
-//                sentMessageToSever("712","Set Button",i+"",idPLayer+"");
-//
-//                sentMessageToSever("714","Player Turn",inUseplayer+"",idPLayer+"");
-//            }
-//        }
-//    }
-
-
 
 
     public void setInUseplayer(boolean inUseplayer) {
@@ -526,21 +505,9 @@ public class GameController {
     }
 
 
-
-//    public void setHitlabel(String hit,String player){ // set player hit
-//        if(player.equals("1")) {
-//            Hit1.setText("P1: "+hit);
-//        }
-//        if(player.equals("2")) {
-//            Hit2.setText("P2: "+hit);
-//        }
-//    }
-
-
-
     public void handleButtonSend(){ // ChatField
         if(!message.getText().equals("")) {
-            sentMessageToSever("600","Chat",message.getText()+"",idPLayer+"");
+            sentMessageToSever("600","Chat",message.getText()+"",idPLayer+"",null);
             message.clear();
         }
     }
